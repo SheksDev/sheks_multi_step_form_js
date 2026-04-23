@@ -33,7 +33,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 65%;
-    /* min-height: 5svh; */
     height: 86%;
     background-color: var(--white);
     border-radius: 2%;
@@ -57,9 +56,9 @@ aside {
 }
 
 aside img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    position: absolute;
+    object-fit: contain;
 }
 
 .sidebar_mobile {
