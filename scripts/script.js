@@ -180,10 +180,11 @@ const phone = document.querySelector('#phone_input');
     email.addEventListener('input',
         debounce(() => {
             const emailValue = email.value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
             if(emailValue === "") {
                 handleError(email, 'This field is required')
-            } else if(!emailValue.includes('@') || !emailValue.includes('.')) {
+            } else if(!emailRegex.test(emailValue)) {
                 handleError(email, 'Invalid email address')
             } else {
                 handleSuccess(email)
@@ -195,9 +196,12 @@ const phone = document.querySelector('#phone_input');
     phone.addEventListener('input',
         debounce(() => {
             const phoneValue = phone.value.trim();
+            const phoneRegex = /^(?:\d{11}|\+\d{1,3}\d{10})$/
 
             if(phoneValue === "") {
                 handleError(phone, 'This field is required')
+            } else if(!phoneRegex.test(phoneValue)){
+                handleError(phone, 'Invalid phone number')
             } else {
                 handleSuccess(phone)
             }
